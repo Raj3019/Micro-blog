@@ -1,0 +1,43 @@
+{% load static %}
+{% include 'microblog/base.html' %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Post</title>
+    </head>
+    <body>
+{#    {% block content %}#}
+{#    <h1>This is dashboard</h1>#}
+{#    {% for post in posts %}#}
+{#        {{ post }}#}
+{#        {{ post.created_on }}#}
+{#    {% endfor %}#}
+{#    {% endblock %}#}
+    {% block content %}
+  <div class="container">
+  <br>
+    <h1>Posts</h1>
+  <br>
+    {% if posts %}
+      {% for post in posts %}
+        <div class="card mb-3">
+          <div class="card-header">
+            <h2>{{ post.title }}</h2>
+          </div>
+          <div class="card-body">
+            <p>{{ post.post |safe }}</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Posted by {{ post.author.username }} on {{ post.created_on }}</small>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No posts found.</p>
+    {% endif %}
+  </div>
+{% endblock %}
+    </body>
+    </html>

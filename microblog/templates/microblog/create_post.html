@@ -1,0 +1,44 @@
+{% extends 'microblog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Post</title>
+</head>
+<body>
+{#    {% block content %}#}
+{#    <h3>Create Post</h3>#}
+{#    <br>#}
+{#    <form method="post" autocomplete="off">#}
+{#        {% csrf_token %}#}
+{#        {{ form.title|as_crispy_field }}#}
+{#        <br>#}
+{#        {{ form.post|as_crispy_field }}#}
+{#        <br>#}
+{#        <button type="submit" class="btn btn-primary"> Submit</button>#}
+{#    </form>#}
+{#    {% endblock %}#}
+
+
+    <div class="container">
+        <br>
+        <h3>Create Post</h3>
+        <br>
+        <form method="post" autocomplete="off">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.title|as_crispy_field }}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ form.post|as_crispy_field }}
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}

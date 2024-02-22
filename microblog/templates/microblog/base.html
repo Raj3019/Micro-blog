@@ -1,0 +1,29 @@
+{% load static %}
+{% include 'microblog/navbar.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    {{ title }}
+    {% endblock %}
+
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">#}
+</head>
+<body>
+    {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <p id="message-timer" class="alert alert-success float-center text-center message-text">
+                <i class="fa fa-check" aria-hidden="true"></i> &nbsp; {{ message }}
+            </p>
+        {% endif %}
+    {% endfor %}
+     {% block content %}
+
+
+    {% endblock %}
+
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>
