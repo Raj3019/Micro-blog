@@ -11,7 +11,17 @@
 
 {#    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">#}
 </head>
-<body>
+<body data-bs-theme="dark">
+<div class="form-check form-switch mx-4">
+      <input
+        class="form-check-input p-2"
+        type="checkbox"
+        role="switch"
+        id="flexSwitchCheckChecked"
+        checked
+        onclick="myFunction()"
+      />
+    </div>
     {% for message in messages %}
         {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
             <p id="message-timer" class="alert alert-success float-center text-center message-text">
@@ -25,5 +35,21 @@
     {% endblock %}
 
     <script src="{% static 'js/app.js' %}"></script>
+    <script>
+      function myFunction() {
+        var element = document.body;
+        element.dataset.bsTheme =
+          element.dataset.bsTheme == "light" ? "dark" : "light";
+      }
+      function stepFunction(event) {
+        debugger;
+        var element = document.getElementsByClassName("collapse");
+        for (var i = 0; i < element.length; i++) {
+          if (element[i] !== event.target.ariaControls) {
+            element[i].classList.remove("show");
+          }
+        }
+      }
+    </script>
 </body>
 </html>
