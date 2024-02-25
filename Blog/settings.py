@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'microblog.apps.MicroblogConfig',
     'crispy_forms',
+    'admin_honeypot',
 ]
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
