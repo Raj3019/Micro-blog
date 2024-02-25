@@ -1,0 +1,40 @@
+{% load static %}
+{% include 'microblog/base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard_styles.css' %}">
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <br>
+        <h1>Posts Timeline</h1>
+        <br>
+        <div class="timeline">
+            {% if posts %}
+                {% for post in posts reversed %}
+                    <div class="timeline-item">
+                        <div class="timeline-item-date">
+                            <div>{{ post.created_on|date:"D" }}</div>
+                            <div>{{ post.created_on|date:"d M Y" }}</div>
+                        </div>
+                        <div class="timeline-item-content">
+                            <p>{{ post.post | safe }}</p>
+                            <small class="timeline-item-info">Posted by {{ post.author.username }} on {{ post.created_on }}</small>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>No posts found.</p>
+                {% endfor %}
+            {% else %}
+                <p>No posts found.</p>
+            {% endif %}
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

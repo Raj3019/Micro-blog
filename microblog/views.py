@@ -18,7 +18,7 @@ def index(request):
 def post(request):
     posts = Post.objects.all().order_by('-created_on')
     context = {'posts': posts}
-    return render(request, "microblog/dashboard.html", context)
+    return render(request, "microblog/new_dashboard.html", context)
 
 
 def register(request):
