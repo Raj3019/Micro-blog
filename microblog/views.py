@@ -1,3 +1,4 @@
+
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
@@ -16,7 +17,7 @@ def index(request):
 
 @login_required(login_url='login')
 def post(request):
-    posts = Post.objects.all().order_by('-created_on')
+    posts = Post.objects.all().order_by('created_on')
     context = {'posts': posts}
     return render(request, "microblog/new_dashboard.html", context)
 
